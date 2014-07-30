@@ -16,6 +16,8 @@ gem 'activerecord', '~>4.1'
 
 gem 'rake'
 gem 'carrierwave'
+gem 'oily_png'
+gem 'mini_magick'
 
 group :test do
   gem 'rack-test'

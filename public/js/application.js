@@ -1,7 +1,26 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+$(function() {
+  
+  $('#sprite-image').click(function(event) {
+    var x, y;
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    x = Math.floor(event.pageX - $(this).offset().left);
+    y = Math.floor(event.pageY - $(this).offset().top);
+    url = $(this).attr('src')
+    $('#mouseX').text(x);
+    $('#mouseY').text(y);
+
+    data = {
+      x: x,
+      y: y,
+      imageURL: url
+    }
+
+    $.get('/image/colorpicker', data, function(response) {
+      console.log(response.height);
+      $('#color').text(response.response);
+      $('body').css('background-color', response.bgColor)
+    })
+
+  })
+
 });
