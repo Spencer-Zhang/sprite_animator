@@ -48,7 +48,7 @@ require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 
 CarrierWave.configure do |config|
-  config.root = APP_ROOT
+  config.root = File.join(APP_ROOT, 'public')
 end
 
 also_reload 'app/models/*' if development?
