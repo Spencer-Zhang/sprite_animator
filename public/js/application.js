@@ -15,10 +15,9 @@ $(function() {
       imageURL: url
     }
 
-    $.get('/image/colorpicker', data, function(response) {
-      console.log(response.height);
-      $('#color').text(response.response);
-      $('body').css('background-color', response.bgColor)
+    $.get('/image/bounds', data, function(response) {
+      console.log(response);
+      
     })
 
   })

@@ -17,12 +17,10 @@ get '/image/colorpicker' do
   x = params[:x].to_i
   y = params[:y].to_i
   image_url = params[:imageURL]
+
   image = ChunkyPNG::Image.from_file('public' + image_url)
 
-  puts "DEBUG ----- x = #{x}; y = #{y}"
-
   color = image[x,y]
-
   response = ChunkyPNG::Color.to_hex(color)
   r = ChunkyPNG::Color.r(color)
   g = ChunkyPNG::Color.g(color)
@@ -35,4 +33,19 @@ get '/image/colorpicker' do
 
   content_type :json
   {response: response, bgColor: bg_color, height: height}.to_json
+end
+
+
+
+get '/image/bounds' do
+  x = params[:x].to_i
+  y = params[:y].to_i
+  image_url = params[:imageURL]
+
+  image = ChunkyPNG::Image.from_file('public' + params[:imageURL])
+
+  response = get_bounds(image, x, y)
+
+  content_type :json
+  response.to_json
 end
