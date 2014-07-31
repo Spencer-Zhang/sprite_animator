@@ -1,4 +1,4 @@
-<div class="left frame">
+<div class="main">
     <form action='/' method='post' enctype='multipart/form-data'>
       <input type='file' name='file' />
       <input type='submit' />
@@ -11,12 +11,35 @@
     <img id='sprite-image' src='<%= @image_url %>' />
 </div>
 
-<div class="right frame">
+<div class="right">
 
-  Testing the new frame
+  <center>Testing the new frame</center>
 
-  <div class="sprite">
-    <img id='sprite-movable' src='<%= @image_url %>' />
-  </div>
+    <div class="canvas">
+      <div class="sprite">
+        <img id='sprite-movable' src='<%= @image_url %>' />
+      </div>
+    </div>
+
+    <div class="parameters">
+      x: <input type="number" id='x'><br>
+      y: <input type="number" id='y'><br>
+      width: <input type="number" id='width'><br>
+      height: <input type="number" id='height'><br>
+      offset_x: <input type="number" id='offX'><br>
+      offset_y: <input type="number" id='offY'><br>
+    </div>
+
+  <center>
+
+    <button id='animate-button'>Animate!</button><p>
+    Frames
+  </center>
+
+  <ol id="frame-list">
+
+  </ol>
+
+
 
 </div>

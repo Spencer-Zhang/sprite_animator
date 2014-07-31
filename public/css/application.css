@@ -1,27 +1,62 @@
-div.frame {
-  vertical-align: top;
-  border: 1px solid black;
+body{
+  padding-right: 200px;
 }
 
-div.left{
-  display:inline-block;
-  width: 48%;
+div.main {
+  display: block;
+  width: 600px;
+  margin: 0 auto;
+  border: 1px solid black;
+  overflow: hidden;
 }
 
 div.right{
-  display:inline-block;
-  width: 50%;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 300px;
+  height: 100%;
+  padding-top: 20px;
+}
+
+div.canvas {
+  margin: 5px auto;
+  border: 1px solid red;
+  width: 100px;
+  height: 100px;
 }
 
 div.sprite {
+  position:relative;
   border: 1px solid black;
   overflow:hidden;
-  height: 60px;
-  width: 60px;
-  margin: 5px auto;
+  height: 1px;
+  width: 1px;
+  margin: 5px;
 }
 
 div.sprite img#sprite-movable {
   display:block;
   position: relative;
+}
+
+.parameters {
+  padding-right: 97px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.parameters input {
+  width: 100px;
+}
+
+#frame-list {
+  line-height: 1.5em;
+  margin: 0 auto;
+  list-style-type: none;
+}
+
+#frame-list li {
+  margin: 0 5px;
 }

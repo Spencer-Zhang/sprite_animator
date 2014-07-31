@@ -1,9 +1,7 @@
 get '/' do
-  @image_url = Spritesheet.first.file.url
+  @image_url = Spritesheet.last.file.url
   erb :index
 end
-
-
 
 post '/' do
   spritesheet = Spritesheet.new
@@ -12,6 +10,8 @@ post '/' do
 
   redirect '/'
 end
+
+
 
 get '/image/colorpicker' do
   x = params[:x].to_i
@@ -46,6 +46,18 @@ get '/image/bounds' do
 
   response = get_bounds(image, x, y)
 
-  content_type :json
-  response.to_json
+  if response
+    content_type :json
+    response.to_json
+  else
+    status 400
+  end
+end
+
+
+
+get '/frame' do
+  puts params
+
+  erb :'partials/frame', locals:{frame:params}
 end

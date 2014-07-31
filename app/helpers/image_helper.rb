@@ -4,45 +4,39 @@ helpers do
 
     def test(image, transparent, direction)
 
-      loop do
         changed = false
 
         case direction
         when :left
-          horiz_range = (x..x)
+          horiz_range = [x]
           vert_range = (y...y+height)
         when :right
-          horiz_range = (x+width-1..x+width-1)
+          horiz_range = [x+width-1]
           vert_range = (y...y+height)
         when :up
           horiz_range = (x...x+width)
-          vert_range = (y..y)
+          vert_range = [y]
         when :down
           horiz_range = (x...x+width)
-          vert_range = (y+height-1..y+height-1)
+          vert_range = [y+height-1]
         end
 
         horiz_range.each do |ix|
           vert_range.each do |iy|
 
-            # puts "Testing #{ix}, #{iy}; Color value is #{image[ix,iy]}"
-
-            if image[ix, iy] != transparent
+            if changed == false && image[ix, iy] != transparent
               changed = true if self.lengthen(direction, image) == true
-              break if changed
             end
 
           end
         end
 
-        break unless changed
-      end
+        return changed
 
     end
 
 
     def lengthen(direction, image)
-      # puts "Lengthen towards #{direction}; current params: #{x}, #{y}, #{width}, #{height}"
 
       case direction
       when :up
@@ -66,8 +60,10 @@ helpers do
   end
 
   def get_bounds(image, x, y)
-    bounds = Bounds.new(x, y, 1, 1)
     transparent = image[0,0]
+    return nil if image[x,y] == transparent
+
+    bounds = Bounds.new(x, y, 1, 1)
 
     changed = true
     while(changed == true)
@@ -76,7 +72,6 @@ helpers do
       changed = true if bounds.test(image, transparent, :down)
       changed = true if bounds.test(image, transparent, :right)
       changed = true if bounds.test(image, transparent, :up)
-      break
     end
 
     response = {
