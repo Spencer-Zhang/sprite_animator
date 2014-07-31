@@ -1,0 +1,27 @@
+div.frame {
+  vertical-align: top;
+  border: 1px solid black;
+}
+
+div.left{
+  display:inline-block;
+  width: 48%;
+}
+
+div.right{
+  display:inline-block;
+  width: 50%;
+}
+
+div.sprite {
+  border: 1px solid black;
+  overflow:hidden;
+  height: 60px;
+  width: 60px;
+  margin: 5px auto;
+}
+
+div.sprite img#sprite-movable {
+  display:block;
+  position: relative;
+}
