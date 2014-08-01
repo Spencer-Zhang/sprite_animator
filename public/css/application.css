@@ -74,8 +74,13 @@ div.sprite img#sprite-movable {
   padding: 10px;
   position: absolute;
   background-color: white;
+  left: 30px;
 }
 
 .csv-frame textarea {
-  height: 200px;
+  height: 100px;
+}
+
+button {
+  width: 120px;
 }
