@@ -33,17 +33,14 @@
     <button id='delete-button'>Delete Frame</button><br>
     <button id='csv-button'>CSV</button><br>
     <div class='csv-frame'>
-      <textarea></textarea><br>
+      <textarea>
+        <%= @frame_data if @frame_data %>
+      </textarea><br>
       <button id ='csv-import-button'>Import</button>
     </div>
     <button id='save-button'>Save</button><p>
     Frames
   </center>
 
-  <ol id="frame-list">
-    
-  </ol>
-
-
-
+  <ol id="frame-list"></ol>
 </div>

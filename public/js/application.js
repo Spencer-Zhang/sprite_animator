@@ -74,11 +74,21 @@ $(window).load(function() {
     $('.csv-frame').toggle();
   })
 
-  $('#delete-button').click(function() {
-    deleteFrame(currentFrame);
-  })
+  $('#delete-button').click(function()     { deleteFrame(currentFrame); })
+  $('#csv-import-button').click(function() { readCSV(); });
+  $('#save-button').click(function()       { saveAnimation(); });
 
 });
+
+
+
+
+
+
+
+
+
+
 
 function stopAnimation() {
   if(animating) {
@@ -141,6 +151,32 @@ function writeCSV() {
   }
   return text
 }
+
+
+function readCSV() {
+  var index;
+  text = $('textarea').val();
+  arrays = $.csv.toArrays(text);
+
+  frameList = [];
+  for(index = 0; index < arrays.length; index++) {
+    new Frame(arrays[index][0], arrays[index][1], 
+              arrays[index][2], arrays[index][3], 
+              arrays[index][4], arrays[index][5]);
+  }
+
+  loadFrame(frameList[0])
+  refreshFrameList();
+}
+
+
+function saveAnimation() {
+  var data = { list: frameList }
+  $.post('/animation', data, function() {
+    console.log("success!");
+  })
+}
+
 
 function deleteFrame(index) {
   frameList.splice(index, 1);

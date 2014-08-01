@@ -51,10 +51,18 @@ get '/image/bounds' do
   end
 end
 
-
-
 get '/frame' do
   puts params
 
   erb :'partials/frame', locals:{frame:params}
+end
+
+post '/animation' do
+  animation = Animation.create(params[:spritesheet_id])
+
+  params[:list].each do |frame|
+    animation.frames.create
+  end
+
+  "test"
 end
