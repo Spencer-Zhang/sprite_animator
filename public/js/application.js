@@ -158,17 +158,19 @@ function writeCSV() {
 function readCSV() {
   var index;
   text = $('textarea').val();
-  arrays = $.csv.toArrays(text);
+  if(text != '') {
+    arrays = $.csv.toArrays(text);
 
-  frameList = [];
-  for(index = 0; index < arrays.length; index++) {
-    new Frame(parseInt(arrays[index][0]), parseInt(arrays[index][1]), 
-              parseInt(arrays[index][2]), parseInt(arrays[index][3]), 
-              parseInt(arrays[index][4]), parseInt(arrays[index][5]))
+    frameList = [];
+    for(index = 0; index < arrays.length; index++) {
+      new Frame(parseInt(arrays[index][0]), parseInt(arrays[index][1]), 
+                parseInt(arrays[index][2]), parseInt(arrays[index][3]), 
+                parseInt(arrays[index][4]), parseInt(arrays[index][5]))
+    }
+
+    loadFrame(frameList[0])
+    refreshFrameList();
   }
-
-  loadFrame(frameList[0])
-  refreshFrameList();
 }
 
 
