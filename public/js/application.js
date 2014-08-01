@@ -20,6 +20,8 @@ $(window).load(function() {
 
   $('.csv-frame').hide();
 
+  readCSV();
+
   if(img_width > 600) {
     $('.main').css('width', img_width)
   }
@@ -171,10 +173,10 @@ function readCSV() {
 
 
 function saveAnimation() {
-  var data = { list: frameList }
+  var data = { list: frameList, spritesheetID: $('#spritesheet-id').text() }
   $.post('/animation', data, function() {
     console.log("success!");
-  })
+  }, 'json')
 }
 
 

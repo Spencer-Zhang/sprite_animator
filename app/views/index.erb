@@ -10,6 +10,14 @@
   <% @spritesheets.each do |spritesheet| %>
     <li>
       <a href="/editor/<%= spritesheet.id %>"><%= spritesheet.filename %></a>
+
+      <% spritesheet.animations.each do |animation| %>
+        <ul>
+          <li>
+            <a href="/editor/animation/<%= animation.id %>">Animation</a>
+          </li>
+        </ul>
+      <% end %>
     </li>
   <% end %>
 </div>

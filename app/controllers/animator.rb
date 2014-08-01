@@ -1,13 +1,15 @@
 get '/editor/animation/:animation_id' do
   animation = Animation.find(params[:animation_id])
-  @image_url = animation.spritesheet.file.url
-  @frames = animation.frames.to_a
+  @spritesheet = animation.spritesheet
+  @image_url = @spritesheet.file.url
+  @frames = animation.to_s
   
   erb :editor
 end
 
 get '/editor/:sheet_id' do
-  @image_url = Spritesheet.find(params[:sheet_id]).file.url
+  @spritesheet = Spritesheet.find(params[:sheet_id])
+  @image_url = @spritesheet.file.url
   erb :editor
 end
 
@@ -58,10 +60,15 @@ get '/frame' do
 end
 
 post '/animation' do
-  animation = Animation.create(params[:spritesheet_id])
+  animation = Animation.create(spritesheet_id: params[:spritesheetID].to_i)
 
   params[:list].each do |frame|
-    animation.frames.create
+    animation.frames.create(x:        frame[1]['x'].to_i, 
+                            y:        frame[1]['y'].to_i, 
+                            width:    frame[1]['width'].to_i, 
+                            height:   frame[1]['height'].to_i, 
+                            offset_x: frame[1]['offX'].to_i, 
+                            offset_y: frame[1]['offY'].to_i)
   end
 
   "test"
