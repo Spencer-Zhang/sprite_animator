@@ -8,6 +8,11 @@ post '/' do
   spritesheet.file = params[:file]
   spritesheet.save!
 
+  # Attempt to fix corrupted PNG files.
+  image = MiniMagick::Image.open('public' + spritesheet.file.url)
+  image.format('png')
+  image.write('public' + spritesheet.file.url)
+
   redirect '/'
 end
 

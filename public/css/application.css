@@ -58,5 +58,17 @@ div.sprite img#sprite-movable {
 }
 
 #frame-list li {
+  display: inline-block;
   margin: 0 5px;
+}
+
+.csv-frame {
+  border: 1px solid black;
+  padding: 10px;
+  position: absolute;
+  background-color: white;
+}
+
+.csv-frame textarea {
+  height: 200px;
 }
