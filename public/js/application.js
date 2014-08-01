@@ -1,4 +1,4 @@
-var FRAME_DELAY = 100;
+var frameDelay = 100;
 
 var frameList = [];
 var currentFrame = 0;
@@ -59,9 +59,15 @@ $(function() {
       stopAnimation();
     }
     else {
-      animating = setInterval(function() {loadNextFrame()}, FRAME_DELAY);
+      animating = setInterval(function() {loadNextFrame()}, frameDelay);
       $('#animate-button').text('Stop');
     }
+  })
+
+  $('.parameters').on('change', 'input', function() {
+    parameter = $(this).attr('id');
+    frameList[currentFrame][parameter] = parseInt($(this).val());
+    loadFrame(frameList[currentFrame]);
   })
 });
 
@@ -77,12 +83,22 @@ function stopAnimation() {
 function loadFrame(frame) {
   $('#frame-list li').eq(currentFrame).css('background-color', 'white')
 
-  $('#sprite-movable').css('left', 0-frame.x)
-  $('#sprite-movable').css('top', 0-frame.y)
-  $('.sprite').css('width', frame.width)
-  $('.sprite').css('height', frame.height)
+  $('#sprite-movable').css('left', 0-frame.x);
+  $('#sprite-movable').css('top', 0-frame.y);
+  $('.sprite').css('width', frame.width);
+  $('.sprite').css('height', frame.height);
+  $('.sprite').css('left', frame.offX);
+  $('.sprite').css('top', frame.offY);
 
   currentFrame = frameList.indexOf(frame);
+
+  $('input#x').val(frame.x);
+  $('input#y').val(frame.y);
+  $('input#width').val(frame.width);
+  $('input#height').val(frame.height);
+  $('input#offX').val(frame.offX);
+  $('input#offY').val(frame.offY);
+
 
   $('#frame-list li').eq(currentFrame).css('background-color', '#ccccff')
 }
