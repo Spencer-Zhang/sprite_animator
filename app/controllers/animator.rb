@@ -2,7 +2,7 @@ get '/editor/animation/:animation_id' do
   animation = Animation.find(params[:animation_id])
   @spritesheet = animation.spritesheet
   @image_url = @spritesheet.file.url
-  @frames = animation.to_s
+  @frame_data = animation.to_csv
   
   erb :editor
 end

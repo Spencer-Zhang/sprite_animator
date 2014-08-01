@@ -162,9 +162,9 @@ function readCSV() {
 
   frameList = [];
   for(index = 0; index < arrays.length; index++) {
-    new Frame(arrays[index][0], arrays[index][1], 
-              arrays[index][2], arrays[index][3], 
-              arrays[index][4], arrays[index][5]);
+    new Frame(parseInt(arrays[index][0]), parseInt(arrays[index][1]), 
+              parseInt(arrays[index][2]), parseInt(arrays[index][3]), 
+              parseInt(arrays[index][4]), parseInt(arrays[index][5]))
   }
 
   loadFrame(frameList[0])
