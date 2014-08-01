@@ -1,54 +1,16 @@
-<div class="main">
-    <form action='/' method='post' enctype='multipart/form-data'>
-      <input type='file' name='file' />
-      <input type='submit' />
-    </form>
+<div class="container">
+  <h1>Sprite Animator</h1>
 
-    Mouse X: <span id='mouseX'></span><br>
-    Mouse Y: <span id='mouseY'></span><br>
-    Color: <span style="background-color:white" id='color'></span><br>
+  <form action='/spritesheet' method='post' enctype='multipart/form-data'>
+    <input type='file' name='file' />
+    <input type='submit' />
+  </form>
 
-    <img id='sprite-image' src='<%= @image_url %>' />
-</div>
-
-<div class="right">
-
-  <div class='frame-info'>
-
-    <div class="canvas">
-      <div class="sprite">
-        <img id='sprite-movable' src='<%= @image_url %>' />
-      </div>
-    </div>
-
-    <div class="parameters">
-      x: <input type="number" id='x'><br>
-      y: <input type="number" id='y'><br>
-      width: <input type="number" id='width'><br>
-      height: <input type="number" id='height'><br>
-      offset_x: <input type="number" id='offX'><br>
-      offset_y: <input type="number" id='offY'><br>
-    </div>
-
-  </div>
-
-
-  <center><button id='csv-button'>CSV</button></center>
-  <div class='csv-frame'>
-    <textarea></textarea><br>
-    <button>Close</button>
-  </div>
-
-  <center>
-
-    <button id='animate-button'>Animate!</button><p>
-    Frames
-  </center>
-
-  <ol id="frame-list">
-
-  </ol>
-
-
+  <h3>Spritesheets</h3>
+  <% @spritesheets.each do |spritesheet| %>
+    <li>
+      <a href="/editor/<%= spritesheet.id %>"><%= spritesheet.filename %></a>
+    </li>
+  <% end %>
 
 </div>

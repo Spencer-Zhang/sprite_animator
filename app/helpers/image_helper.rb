@@ -8,26 +8,27 @@ helpers do
 
         case direction
         when :left
-          horiz_range = [x]
+          horiz_range = [x-1]
           vert_range = (y...y+height)
         when :right
-          horiz_range = [x+width-1]
+          horiz_range = [x+width]
           vert_range = (y...y+height)
         when :up
           horiz_range = (x...x+width)
-          vert_range = [y]
+          vert_range = [y-1]
         when :down
           horiz_range = (x...x+width)
-          vert_range = [y+height-1]
+          vert_range = [y+height]
         end
 
         horiz_range.each do |ix|
           vert_range.each do |iy|
 
+            return false if(ix < 0 || ix >= image.width || iy < 0 || iy >= image.height)
+
             if changed == false && image[ix, iy] != transparent
               changed = true if self.lengthen(direction, image) == true
             end
-
           end
         end
 

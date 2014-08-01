@@ -2,6 +2,13 @@ body{
   padding-right: 200px;
 }
 
+.container {
+  border: 1px dotted black;
+  margin: 0 auto;
+  width: 600px;
+  padding: 25px;
+}
+
 div.main {
   display: block;
   width: 600px;
@@ -28,11 +35,11 @@ div.canvas {
 
 div.sprite {
   position:relative;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   overflow:hidden;
   height: 1px;
   width: 1px;
-  margin: 5px;
+  /*margin: 5px;*/
 }
 
 div.sprite img#sprite-movable {

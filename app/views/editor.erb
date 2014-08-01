@@ -1,0 +1,47 @@
+<div class="main">
+    Mouse X: <span id='mouseX'></span><br>
+    Mouse Y: <span id='mouseY'></span><br>
+    Color: <span style="background-color:white" id='color'></span><br>
+
+    <img id='sprite-image' src='<%= @image_url %>' />
+</div>
+
+<div class="right">
+
+  <div class='frame-info'>
+
+    <div class="canvas">
+      <div class="sprite">
+        <img id='sprite-movable' src='<%= @image_url %>' />
+      </div>
+    </div>
+
+    <div class="parameters">
+      x: <input type="number" id='x'><br>
+      y: <input type="number" id='y'><br>
+      width: <input type="number" id='width'><br>
+      height: <input type="number" id='height'><br>
+      offset_x: <input type="number" id='offX'><br>
+      offset_y: <input type="number" id='offY'><br>
+    </div>
+
+  </div>
+
+
+  <center>
+    <button id='csv-button'>CSV Export</button><br>
+    <div class='csv-frame'>
+      <textarea></textarea><br>
+    </div>
+    <button id='delete-button'>Delete Frame</button><br>
+    <button id='animate-button'>Animate!</button><p>
+    Frames
+  </center>
+
+  <ol id="frame-list">
+    
+  </ol>
+
+
+
+</div>

@@ -71,11 +71,11 @@ $(window).load(function() {
 
   $('#csv-button').click(function(){ 
     $('.csv-frame textarea').val(writeCSV());
-    $('.csv-frame').show();
+    $('.csv-frame').toggle();
   })
 
-  $('.csv-frame button').click(function() {
-    $('.csv-frame').hide();
+  $('#delete-button').click(function() {
+    deleteFrame(currentFrame);
   })
 
 });
@@ -140,4 +140,13 @@ function writeCSV() {
     text += frameList[frame].offX + ", " + frameList[frame].offY + "\n"
   }
   return text
+}
+
+function deleteFrame(index) {
+  frameList.splice(index, 1);
+  refreshFrameList();
+  if(currentFrame >= frameList.length) {
+    currentFrame -= 1;
+  }
+  loadFrame(frameList[currentFrame]);
 }
